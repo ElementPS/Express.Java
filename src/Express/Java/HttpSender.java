@@ -9,12 +9,17 @@ import java.io.StringWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
 
 public class HttpSender {
 
@@ -60,7 +65,14 @@ public class HttpSender {
 		        Transformer transformer = transformerFactory.newTransformer(); 
 		        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 		        transformer.transform(xmlInput, xmlOutput);
-		        response = xmlOutput.getWriter().toString();				
+		        response = xmlOutput.getWriter().toString();
+		        
+		        //setup to parse document if needed
+		        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		        DocumentBuilder builder = factory.newDocumentBuilder();
+		        InputSource is = new InputSource(new StringReader(response));
+		        Document doc = builder.parse(is);
+		        
 			} 
 			else { 
 				response = "Error: " + conn.getResponseCode() + " " + conn.getResponseMessage(); 
