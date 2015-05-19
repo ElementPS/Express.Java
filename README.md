@@ -23,7 +23,7 @@ Please contact your Integration Team member for any questions about the prerequi
 
 ##Step 1: Generate a request
 
-You can either generate an XML request or a SOAP request.  The Credentials and Application elements are empty below because these elements are read from the App.config file.  When you receive an email after creating your test account the email will contain the information necessary to populate these fields in the App.config.  Only the credit sale request is shown below, please take a look at the code for the health check message.
+You can either generate an XML request or a SOAP request.  The Credentials and Application elements are empty below because these elements are read from the config.cfg file.  When you receive an email after creating your test account the email will contain the information necessary to populate these fields in the config.cfg file.  Only the credit sale request is shown below, please take a look at the code for the health check message.
 
 This is the XML request:
 
