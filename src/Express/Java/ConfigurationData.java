@@ -9,4 +9,5 @@ public class ConfigurationData {
 	public String ApplicationName;
 	public String ExpressSOAPEndpoint;
 	public String ExpressXMLEndpoint;
+	public String SoapAction;
 }

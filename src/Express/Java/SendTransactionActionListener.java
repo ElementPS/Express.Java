@@ -38,7 +38,14 @@ public class SendTransactionActionListener implements ActionListener{
     	String response = "";
     	
 		try {
-			response = HttpSender.SendData(configData.ExpressXMLEndpoint, null, this.txtRequest.getText());
+			String url = "";
+			if (configData.SoapAction == null) {
+				url = configData.ExpressXMLEndpoint;
+			} else {
+				url = configData.ExpressSOAPEndpoint;
+			}
+			
+			response = HttpSender.SendData(url, configData.SoapAction, this.txtRequest.getText());
 		} 
 		catch (Exception ex) { 
 			response = "Exception: " + ex.getMessage(); 

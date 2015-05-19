@@ -58,7 +58,8 @@ public class ExpressMain extends JFrame {
             configData.ApplicationVersion= (String)p.get("ApplicationVersion");
             configData.ApplicationName= (String)p.get("ApplicationName");
             configData.ExpressSOAPEndpoint= (String)p.get("ExpressSOAPEndpoint");
-            configData.ExpressXMLEndpoint= (String)p.get("ExpressXMLEndpoint");       
+            configData.ExpressXMLEndpoint= (String)p.get("ExpressXMLEndpoint");  
+            configData.SoapAction = null;
         	
         } catch (Exception e) {  
             System.out.println("error reading from config file");
@@ -90,18 +91,12 @@ public class ExpressMain extends JFrame {
 		getContentPane().add(sp2);
 		
 		JButton btnSaleRequestXml = new JButton("Sale Request XML");
-		btnSaleRequestXml.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnSaleRequestXml.addActionListener(new PopulateCreditCardSaleXMLActionListener(txtRequest, configData));
 		btnSaleRequestXml.setBounds(10, 11, 137, 23);
 		getContentPane().add(btnSaleRequestXml);
 		
 		JButton btnSaleRequestSoap = new JButton("Sale Request SOAP");
-		btnSaleRequestSoap.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnSaleRequestSoap.addActionListener(new PopulateCreditCardSaleSOAPActionListener(txtRequest, configData));
 		btnSaleRequestSoap.setBounds(157, 11, 160, 23);
 		getContentPane().add(btnSaleRequestSoap);
 		
@@ -116,18 +111,12 @@ public class ExpressMain extends JFrame {
 		getContentPane().add(btnHealthCheckXml);
 		
 		JButton btnHealthCheckSoap = new JButton("Health Check SOAP");
-		btnHealthCheckSoap.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnHealthCheckSoap.addActionListener(new PopulateHealthCheckSOAPActionListener(txtRequest, configData));
 		btnHealthCheckSoap.setBounds(157, 45, 160, 23);
 		getContentPane().add(btnHealthCheckSoap);
 		
 		JButton btnClearData = new JButton("Clear Data");
-		btnClearData.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnClearData.addActionListener(new ClearDataActionListener(txtRequest, txtResponse));
 		btnClearData.setBounds(327, 45, 137, 23);
 		getContentPane().add(btnClearData);
 

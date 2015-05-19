@@ -29,13 +29,12 @@ public class HttpSender {
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
 			conn.setRequestMethod("POST"); 
+			
+			conn.setRequestProperty("content-type", "text/xml;charset=\"utf-8\"");
+			conn.setRequestProperty("accept", "text/xml");
+			
 			if (soapAction != null) {
-				//conn.setRequestProperty("content-type", "application/json");
-				//conn.setRequestProperty("accept", "application/json");
-				conn.setRequestProperty("SOAPAction", "1234");
-			} else {
-				conn.setRequestProperty("content-type", "text/xml");
-				conn.setRequestProperty("accept", "text/xml");				
+				conn.setRequestProperty("SOAPAction", soapAction);
 			}
 						
 			conn.setRequestProperty("Content-Length", Integer.toString(data.getBytes().length)); 

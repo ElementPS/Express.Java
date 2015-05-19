@@ -6,11 +6,11 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JTextArea;
 
-public class PopulateHealthCheckXMLActionListener implements ActionListener{
+public class PopulateCreditCardSaleXMLActionListener implements ActionListener{
 	    private JTextArea txtRequest;
 	    private ConfigurationData configData;
 
-	    public PopulateHealthCheckXMLActionListener(JTextArea txtRequest, ConfigurationData configData) {
+	    public PopulateCreditCardSaleXMLActionListener(JTextArea txtRequest, ConfigurationData configData) {
 	        super();
 	        this.txtRequest = txtRequest;
 	        this.configData = configData;
@@ -22,7 +22,7 @@ public class PopulateHealthCheckXMLActionListener implements ActionListener{
 			try { 
 	            this.configData.SoapAction = null;
 	            
-				this.txtRequest.setText(HealthCheckXML.HealthCheckToXML(HealthCheckXML.GetHealthCheck(this.configData)));
+				this.txtRequest.setText(CreditCardSaleXML.CreditCardSaleToXML(CreditCardSaleXML.GetCreditCardSale(this.configData)));
 				
 				} 
 				catch (Exception ex) {  

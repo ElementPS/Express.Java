@@ -8,15 +8,15 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "HealthCheck", namespace = "https://transaction.elementexpress.com")
-public class HealthCheck {
+public class HealthCheckXML {
 	@XmlElement(name = "Credentials")
 	public Credentials Credentials;
 	@XmlElement(name = "Application")
 	public Application Application;
 	
-	public static HealthCheck GetHealthCheck(ConfigurationData configData)
+	public static HealthCheckXML GetHealthCheck(ConfigurationData configData)
 	{
-		HealthCheck healthCheck = new HealthCheck();
+		HealthCheckXML healthCheck = new HealthCheckXML();
 		healthCheck.Credentials = new Credentials();
 		healthCheck.Credentials.AccountID = configData.AccountID;
 		healthCheck.Credentials.AccountToken = configData.AccountToken;
@@ -29,11 +29,11 @@ public class HealthCheck {
 		return healthCheck;
 	}
 	
-	public static String HealthCheckToXML(HealthCheck healthCheck) {
+	public static String HealthCheckToXML(HealthCheckXML healthCheck) {
 		String xmlString = "";
 		
 		try {					
-			JAXBContext jaxbContext = JAXBContext.newInstance(HealthCheck.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(HealthCheckXML.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 	
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
