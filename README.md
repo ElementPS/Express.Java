@@ -21,7 +21,7 @@ Please contact your Integration Analyst for any questions about the prerequisite
 
 * Create Express test account: http://www.elementps.com/Resources/Create-a-Test-Account
 
-##Documentation/Troubleshooting
+## Documentation/Troubleshooting
 
 * When you create your Express test account an email will be sent containing links to documentation.
 
@@ -286,7 +286,6 @@ This is the response to a SOAP request
 </soap:Envelope>
 
 ```
-
 
 ## Step 4: Parse response data
 
